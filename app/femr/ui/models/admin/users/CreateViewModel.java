@@ -29,6 +29,7 @@ public class CreateViewModel {
     private String lastName;
     private String email;
     private String password;
+    private String confirmPassword;
     private Boolean isDeleted;
     private String passwordReset;
     private List<String> roles;
@@ -46,6 +47,8 @@ public class CreateViewModel {
             errors.add(new ValidationError("email", "email is a required field"));
         if (StringUtils.isNullOrWhiteSpace(password))
             errors.add(new ValidationError("password", "password is a required field"));
+        if (StringUtils.isNotNullOrWhiteSpace(password) != StringUtils.isNotNullOrWhiteSpace(confirmPassword))
+            errors.add(new ValidationError("confirmPassword", "passwords don't match"));
         if (roles == null || roles.size() < 1)
             errors.add(new ValidationError("roles", "a user needs at least one role"));
 
@@ -83,6 +86,10 @@ public class CreateViewModel {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getConfirmPassword(){ return confirmPassword; }
+
+    public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
 
     public Integer getUserId() {
         return userId;

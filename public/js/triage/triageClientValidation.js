@@ -31,6 +31,8 @@ var triageFieldValidator = {
             $('#ageClassificationWrap').css('border', 'none');
         }
 
+
+
     },
     validatePatientVitals: function () {
         var patientVitals = triageFields.patientVitals;//located in triage.js
